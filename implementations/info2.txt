@@ -1,0 +1,5 @@
+http://stackoverflow.com/questions/34110502/bilinear-tensor-product-in-tensorflow
+https://www.tensorflow.org/api_docs/python/tf/map_fn
+http://stackoverflow.com/questions/38222126/tensorflow-efficient-way-for-tensor-multiplication
+http://papers.nips.cc/paper/5028-reasoning-with-neural-tensor-networks-for-knowledge-base-completion.pdf
+https://github.com/aymericdamien/TensorFlow-Examples

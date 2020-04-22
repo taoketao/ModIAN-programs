@@ -1,0 +1,6 @@
+For work on gradients, esp, wrt. tensors and outer products:
+    https://en.wikipedia.org/wiki/Matrix_calculus
+    https://en.wikipedia.org/wiki/Gradient
+    https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant
+    https://en.wikipedia.org/wiki/Vector_calculus_identities
+    http://www2.imm.dtu.dk/pubdb/views/edoc_download.php/3274/pdf/imm3274.pdf -- The Matrix Cookbook, also somewhere on my hard drive

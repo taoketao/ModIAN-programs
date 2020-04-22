@@ -1,0 +1,21 @@
+Update: 
+- Trial 3-13-17--2210.txt == Tue\ Mar\ 14\ 15/07/55\ 2017.png: had good results!  Looks like near-Xavier weight initialization was in fact successful.  That is, initializing the values to Uni[-32/nvars, 96*nvars] was very effective.
+    Theoretical justification: Weights_Inp_to_Xtheta has dimensions 8*8*8 = 512.  (32+96)/512 = 0.25, and (32+96)/256 = 0.5.  The theoretical justified Xavier values for initializing with variance(weight_inits) =~= 1/n is appropriate for linear networks (Glorot & Bengio).  For nvars = 512, the ideal variance is 0.153, and for nvars = 256, the ideal variance is 0.217, both with mean 0; the higher variance used in the implementation is justified because of the offset mean.
+    This did better than the calculated Xavier initialization, 0.153 and 0.217. 
+    Next trial: try doubling the Xavier parameters, -> 0.306 & 0.434
+    Update: on second inspection, these weights yield errors that max around 10.0 -- well outside the (0,1) range of target values.  The apparent good learning is simply a convergence to those values.  Basically, no reason to think it works...adding bias terms.
+
+    19:54:  For all trials before this point used: NO bias terms at all, softmax on X->XB, no nonlinearity on X->X_th, X_th = WX+b is nontrivial (not identity transformation), no nonlinearities between at Z or Y, and a relu from Y -> X'.
+    New iteration of nonlinearities: 
+        softmax X -> XB.        Identity X -> X_th.     No module nonlinearities.       tanh from Y -> X'.
+    bias terms added to:        W:X->XB                 W:X->Xth (which is redundant while Identity=true)
+        Two module biases for each of Z and Y.          W:Y->X'.
+
+    Next, make the module biases trainable, then make the module completely trainable.
+
+--------------------------------------------------------------------------------------------------
+
+    3/15
+
+    Todo list:  (1) figure out losses!! First step.
+                (2) run trials with Xth initialized near I, all weights trainable, 
